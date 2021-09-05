@@ -21,6 +21,7 @@ function UpdatingCircles() {
   return (
     <>
       <svg ref={svgRef}></svg>
+      <g className="x-axis" />
       <br />
       <button onClick={() => setData(data.map((value) => value + 8))}>
         Update Data
