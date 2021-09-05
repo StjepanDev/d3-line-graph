@@ -35,6 +35,18 @@ function ColoredBarChart() {
       .attr('x', (d, i, n) => xScale(i))
       .attr('y', -150)
       .attr('width', xScale.bandwidth())
+      .on('mouseenter', function (d, i, n) {
+        svg
+          .selectAll('.tooltip')
+          .data([d])
+          .join('text')
+          .attr('class', 'tooltip')
+          .text(i)
+          .attr('x', xScale(i))
+          .attr('y', yScale(d) - 5)
+          .transition()
+          .attr('opacity', 1);
+      })
       .transition()
       .duration(1800)
       .attr('fill', colorScale)

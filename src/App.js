@@ -6,11 +6,11 @@ import ColoredBarChart from './components/ColoredBarChart';
 function App() {
   return (
     <>
-      <ColoredBarChart />
+      <UpdatingCircles />
 
       <br />
       <br />
-      <UpdatingCircles />
+      <ColoredBarChart />
       <br />
       <br />
       <CurvedLineChart />
