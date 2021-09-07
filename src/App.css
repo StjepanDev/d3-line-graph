@@ -1,4 +1,18 @@
 svg {
   background: rgb(216, 213, 213);
   overflow: visible;
+  margin-bottom: 2rem;
+  display: block;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+button {
+  margin-bottom: 5px;
+  width: 100px;
 }

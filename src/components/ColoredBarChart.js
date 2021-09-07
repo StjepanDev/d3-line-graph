@@ -35,22 +35,25 @@ function ColoredBarChart() {
       .attr('x', (d, i, n) => xScale(i))
       .attr('y', -150)
       .attr('width', xScale.bandwidth())
-      .on('mouseenter', function (d, i, n) {
+      .on('mouseenter', (event, d) => {
+        const index = svg.selectAll('.bar').nodes().indexOf(event.target);
+
         svg
           .selectAll('.tooltip')
           .data([d])
-          .join('text')
+          .join((enter) => enter.append('text').attr('y', yScale(d) - 4))
           .attr('class', 'tooltip')
-          .text(i)
-          .attr('x', xScale(i))
-          .attr('y', yScale(d) - 5)
+          .text(d)
+          .attr('x', xScale(index) + xScale.bandwidth() / 2)
+          .attr('text-anchor', 'middle')
           .transition()
+          .attr('y', yScale(d) - 5)
           .attr('opacity', 1);
       })
+      .on('mouseleave', () => svg.select('.tooltip').remove())
       .transition()
-      .duration(1800)
       .attr('fill', colorScale)
-      .attr('height', (d) => 150 - yScale(d));
+      .attr('height', (value) => 150 - yScale(value));
   }, [data]);
 
   return (
